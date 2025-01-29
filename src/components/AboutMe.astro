@@ -1,0 +1,163 @@
+---
+import Card from "./Card/index.astro";
+import Button from "./Button.astro";
+import { LINKS } from "../lib/constants";
+import { Image } from "astro:assets";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+const PDF = "/Fabian_CV_2.pdf";
+---
+
+<script>
+  import {
+    stagger,
+    spring,
+    timeline,
+    type TimelineDefinition,
+  } from "@motionone/dom";
+
+  const links = document.querySelectorAll(".link");
+
+  const sequence = [
+    [
+      links,
+      { y: ["60%", "0%"], opacity: [0, 1], scale: [0, 1] },
+      {
+        at: "-0.5",
+        duration: 0.4,
+        delay: stagger(0.3),
+        easing: spring({ velocity: 1, stiffness: 20, damping: 10 }),
+      },
+    ],
+  ];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Card colSpan="md:col-span-3 overflow-hidden" rowSpan="md:row-span-4">
+  <div class="flex w-full h-full">
+    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+      <div class="flex flex-col h-full">
+        <h1 class="text-2xl font-bold">🚀 Bienvenido/a</h1>
+        <p class="m-1 text-[#212121] 2xl:text-lg text-base dark:text-white text-wrap" data-cursor="text">
+          Soy <span class="font-bold">Fabián Casas</span> Estudiante
+          de la carrera
+          <span class="font-bold">Analista Programador</span> en <span
+            class="text-[#fbbd1e]">Duoc</span
+          >
+          <span class="text-[#3998eb]">UC</span> apasionado por el desarrollo Frontend.
+          Actualmente ya terminé mis 2 años de estudio y me encuentro en busca de
+          mi práctica profesional, me he desempeñado en <span class="font-bold"
+            >Frontend</span
+          >
+          (JavaScript, Angular, Astro, Bootstrap) y algo de <span
+            class="font-bold">Backend</span
+          > (Django, FireBase, SQL, MySQL).
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <a href={LINKS.github} aria-label="github profile" target="_blank">
+          <Button aria-label="github profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="icon icon-tabler icons-tabler-filled icon-tabler-brand-github"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13.3 0 0 1 4.59 -.08l.456 .08l.396 .083l.161 -.1c1.385 -.84 2.487 -1.17 3.322 -1.148l.164 .008l.147 .017l.076 .014l.05 .011l.144 .047a1 1 0 0 1 .53 .514a5.2 5.2 0 0 1 .397 2.91l-.047 .267l-.046 .196l.123 .163c.574 .795 .93 1.728 1.03 2.707l.023 .295l.007 .272c0 3.855 -1.659 5.883 -4.644 6.68l-.245 .061l-.132 .029l.014 .161l.008 .157l.004 .365l-.002 .213l-.003 3.834a1 1 0 0 1 -.883 .993l-.117 .007h-6a1 1 0 0 1 -.993 -.883l-.007 -.117v-.734c-1.818 .26 -3.03 -.424 -4.11 -1.878l-.535 -.766c-.28 -.396 -.455 -.579 -.589 -.644l-.048 -.019a1 1 0 0 1 .564 -1.918c.642 .188 1.074 .568 1.57 1.239l.538 .769c.76 1.079 1.36 1.459 2.609 1.191l.001 -.678l-.018 -.168a5.03 5.03 0 0 1 -.021 -.824l.017 -.185l.019 -.12l-.108 -.024c-2.976 -.71 -4.703 -2.573 -4.875 -6.139l-.01 -.31l-.004 -.292a5.6 5.6 0 0 1 .908 -3.051l.152 -.222l.122 -.163l-.045 -.196a5.2 5.2 0 0 1 .145 -2.642l.1 -.282l.106 -.253a1 1 0 0 1 .529 -.514l.144 -.047l.154 -.03z"
+              ></path></svg
+            >
+            <span class="sr-only">GitHub Profile</span>
+          </Button>
+        </a>
+        <a
+          href={LINKS.linkedin}
+          aria-label="linkedin profile"
+          target="_blank"
+          class="link"
+        >
+          <Button aria-label="linkedin profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="icon icon-tabler icons-tabler-filled icon-tabler-brand-linkedin"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1 -5 5h-10a5 5 0 0 1 -5 -5v-10a5 5 0 0 1 5 -5zm-9 8a1 1 0 0 0 -1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0 -1 -1m6 0a3 3 0 0 0 -1.168 .236l-.125 .057a1 1 0 0 0 -1.707 .707v5a1 1 0 0 0 2 0v-3a1 1 0 0 1 2 0v3a1 1 0 0 0 2 0v-3a3 3 0 0 0 -3 -3m-6 -3a1 1 0 0 0 -.993 .883l-.007 .127a1 1 0 0 0 1.993 .117l.007 -.127a1 1 0 0 0 -1 -1"
+              ></path></svg
+            >
+            <span class="sr-only">Linkedin Profile</span>
+          </Button>
+        </a>
+        <a
+          href={LINKS.instagram}
+          aria-label="instagram profile"
+          target="_blank"
+          class="link"
+        >
+          <Button aria-label="instagram profile">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 22 22"
+              fill="currentColor"
+              class="icon icon-tabler icons-tabler-filled icon-tabler-brand-instagram"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M16 3a5 5 0 0 1 5 5v8a5 5 0 0 1 -5 5h-8a5 5 0 0 1 -5 -5v-8a5 5 0 0 1 5 -5zm-4 5a4 4 0 0 0 -3.995 3.8l-.005 .2a4 4 0 1 0 4 -4m4.5 -1.5a1 1 0 0 0 -.993 .883l-.007 .127a1 1 0 0 0 1.993 .117l.007 -.127a1 1 0 0 0 -1 -1"
+              ></path></svg
+            >
+            <span class="sr-only">Instagram Profile</span>
+          </Button>
+        </a>
+        <a target="_blank" href={PDF} class="link">
+          <Button aria-label="resume">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              width="20"
+              height="20"
+              xml:space="preserve"
+              ><path
+                style="fill:#f2f2f2"
+                d="M192.087 503.248h237.605c7.509 0 13.596-6.087 13.596-13.596V22.348c0-7.509-6.087-13.596-13.596-13.596H82.309c-7.509 0-13.596 6.087-13.596 13.596v357.525l123.374 123.375z"
+              ></path><path
+                style="fill:#e6e6e6"
+                d="M429.691 8.752H399.35c7.508 0 13.596 6.087 13.596 13.596v467.303c0 7.508-6.087 13.596-13.596 13.596h30.341c7.508 0 13.596-6.087 13.596-13.596V22.348c0-7.508-6.087-13.596-13.596-13.596zM192.087 391.823v111.426L68.713 379.875h111.426c6.599 0 11.948 5.349 11.948 11.948z"
+              ></path><path
+                style="fill:#ccc"
+                d="M161.746 379.875v93.033l30.341 30.341V392.213c0-6.814-5.523-12.337-12.337-12.337h-18.004v-.001z"
+              ></path><path
+                style="fill:#fee570"
+                d="M429.691 8.752H82.309c-7.509 0-13.596 6.087-13.596 13.596V41.6h374.574V22.348c0-7.508-6.087-13.596-13.596-13.596z"
+              ></path><path
+                style="fill:#fed301"
+                d="M412.946 22.348V41.6h30.341V22.348a13.542 13.542 0 0 0-3.982-9.613 13.553 13.553 0 0 0-9.613-3.982h-30.341c7.508-.001 13.595 6.087 13.595 13.595z"
+              ></path><path
+                style="fill:#232323"
+                d="M128.656 98.11c2.381-2.381 5.325-4.282 8.756-5.65 3.544-1.417 7.631-2.134 12.147-2.134 4.24 0 7.827.614 10.662 1.825a26.021 26.021 0 0 1 4.81 2.662 8.75 8.75 0 0 0 12.199-2.091c2.791-3.947 1.855-9.409-2.091-12.199a43.675 43.675 0 0 0-8.042-4.468c-5.024-2.145-10.924-3.234-17.539-3.234-6.751 0-13.022 1.139-18.64 3.382-5.643 2.253-10.569 5.458-14.642 9.528-4.069 4.072-7.265 8.977-9.5 14.582-2.223 5.582-3.35 11.793-3.35 18.464 0 6.561 1.007 12.71 2.993 18.278 2.007 5.631 4.946 10.554 8.734 14.634 3.797 4.089 8.432 7.321 13.775 9.606 5.331 2.283 11.39 3.439 18.008 3.439 7.373 0 13.821-1.224 19.166-3.635 3.384-1.528 6.471-3.497 9.173-5.858a8.753 8.753 0 0 0 .837-12.349c-3.178-3.64-8.707-4.013-12.349-.837-1.427 1.245-3.017 2.256-4.862 3.088-3.067 1.385-7.093 2.087-11.966 2.087-4.237 0-7.978-.682-11.122-2.027-3.077-1.316-5.713-3.141-7.833-5.425-2.162-2.328-3.868-5.222-5.075-8.603-1.31-3.676-1.976-7.848-1.976-12.398 0-4.443.708-8.476 2.108-11.985 1.35-3.382 3.241-6.304 5.619-8.682zM223.556 163.803h6.281a8.75 8.75 0 0 0 8.115-5.474l29.299-72.544a8.752 8.752 0 0 0-4.838-11.393c-4.482-1.813-9.582.356-11.393 4.838l-24.324 60.225-24.326-60.227a8.75 8.75 0 0 0-11.393-4.838 8.752 8.752 0 0 0-4.838 11.393l29.299 72.546a8.759 8.759 0 0 0 8.118 5.474zM389.617 207.903H106.63a8.75 8.75 0 0 0-8.752 8.752 8.75 8.75 0 0 0 8.752 8.752h282.987a8.75 8.75 0 0 0 8.752-8.752 8.75 8.75 0 0 0-8.752-8.752zM389.617 145.91H271.17a8.75 8.75 0 0 0-8.752 8.752 8.75 8.75 0 0 0 8.752 8.752h118.446a8.75 8.75 0 0 0 8.752-8.752 8.75 8.75 0 0 0-8.751-8.752zM389.617 269.894H106.63c-4.835 0-8.752 3.917-8.752 8.752s3.917 8.752 8.752 8.752h282.987c4.835 0 8.752-3.917 8.752-8.752s-3.918-8.752-8.752-8.752zM389.617 331.885h-33.161a8.75 8.75 0 0 0-8.752 8.752 8.75 8.75 0 0 0 8.752 8.752h33.161a8.75 8.75 0 0 0 8.752-8.752 8.75 8.75 0 0 0-8.752-8.752zM328.391 340.637a8.75 8.75 0 0 0-8.752-8.752H106.63a8.75 8.75 0 0 0-8.752 8.752 8.75 8.75 0 0 0 8.752 8.752h213.009a8.75 8.75 0 0 0 8.752-8.752zM299.207 443.553l33.243-16.137 3.098 14.385a8.754 8.754 0 0 0 12.205 6.113l45.511-20.872a8.751 8.751 0 0 0 4.306-11.603 8.749 8.749 0 0 0-11.604-4.307l-35.602 16.327-3.151-14.627a8.752 8.752 0 0 0-12.379-6.031l-43.274 21.005a8.753 8.753 0 1 0 7.647 15.747z"
+              ></path><path
+                style="fill:#232323"
+                d="M443.287 110.693a8.75 8.75 0 0 0 8.752-8.752V22.348C452.039 10.025 442.014 0 429.691 0L82.309.001c-12.324 0-22.348 10.025-22.348 22.347v357.525c0 .099.012.197.014.295a9.08 9.08 0 0 0 .152 1.4l.002.015a8.842 8.842 0 0 0 .398 1.361c.126.336.266.665.433.984.011.02.018.04.028.06a8.67 8.67 0 0 0 .778 1.195c.235.307.482.606.759.881l123.374 123.374c.207.207.422.401.646.585.114.093.236.175.354.261.113.084.224.173.341.251.135.09.278.167.417.25.107.063.211.132.321.19.139.074.282.134.425.201.117.055.231.114.35.163.137.056.278.1.415.149.13.047.258.098.39.138.133.04.27.068.404.102.141.035.281.077.425.105.139.028.28.042.421.063.141.021.282.048.425.062.237.023.476.031.714.035.047.001.093.007.14.007H429.69c12.324 0 22.348-10.025 22.348-22.347V138.797c0-4.835-3.917-8.752-8.752-8.752s-8.752 3.917-8.752 8.752v350.855a4.85 4.85 0 0 1-4.844 4.843H200.838v-50.54a8.75 8.75 0 0 0-8.752-8.752 8.75 8.75 0 0 0-8.752 8.752v38.162l-93.492-93.492h90.297a3.2 3.2 0 0 1 3.195 3.196v14.499a8.75 8.75 0 0 0 8.752 8.752 8.75 8.75 0 0 0 8.752-8.752v-14.499c0-11.414-9.285-20.701-20.699-20.701H77.465V22.348a4.85 4.85 0 0 1 4.844-4.843l347.382-.001a4.85 4.85 0 0 1 4.844 4.844v79.592a8.752 8.752 0 0 0 8.752 8.753z"
+              ></path></svg
+            >
+            <span class="sr-only">Download Resume</span>
+          </Button>
+        </a>
+
+        <ThemeSwitcher />
+      </div>
+    </div>
+    <Image
+      width="300"
+      height="300"
+      src="/memoji_fabian.webp"
+      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
+      alt="Fabian Casas Memoji"
+    />
+  </div>
+</Card>

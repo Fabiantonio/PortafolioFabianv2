@@ -1,0 +1,58 @@
+---
+import Content from "./Content.astro";
+
+interface Props {
+    title?: string;
+    body?: string;
+    colSpan?: string;
+    rowSpan?: string;
+    href?: string;
+    colorText?: string;
+    height?: string;
+    width?: string;
+}
+
+const { title, body, colSpan, rowSpan, href, colorText, height } = Astro.props;
+---
+
+<div
+    class={`card opacity-0 h-max sm:h-auto text-black dark:text-white group overflow-hidden transition-colors duration-500 ease-in-out bg-[#FFFFFF] dark:bg-[#131313] p-3 sm:p-6 border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md rounded-xl hover:border-indigo-500 dark:hover:border-indigo-500 align-start flex-none ${
+        height || "h-full"
+    } justify-start relative transform perspective-1200 w-full transition duration-500 ease-in-out col-span-1 ${
+        colSpan || "md:col-span-2"
+    } ${rowSpan || ""}`}
+>
+    {
+        href ? (
+            <a href={href} class={`h-auto w-full ${colorText || " "}`}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-6 float-right group-hover:translate-x-1 group-hover:-translate-y-1  transition-transform ease-in-out duration-100 z-20"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 12l3 0" />
+                    <path d="M12 3l0 3" />
+                    <path d="M7.8 7.8l-2.2 -2.2" />
+                    <path d="M16.2 7.8l2.2 -2.2" />
+                    <path d="M7.8 16.2l-2.2 2.2" />
+                    <path d="M12 12l9 3l-4 2l-2 4l-3 -9" />
+                </svg>
+                <Content title={title} body={body}>
+                    <slot />
+                </Content>
+            </a>
+        ) : (
+            <Content title={title} body={body}>
+                <slot />
+            </Content>
+        )
+    }
+</div>

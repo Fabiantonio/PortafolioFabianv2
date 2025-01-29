@@ -1,0 +1,29 @@
+{
+  "name": "portafolio-fabian-v2",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/preact": "^3.5.3",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/onest": "^5.1.0",
+    "@motionone/dom": "^10.18.0",
+    "aos": "^3.0.0-beta.6",
+    "astro": "^4.9.2",
+    "ipad-cursor": "^0.5.2",
+    "preact": "^10.24.3",
+    "solid-js": "^1.9.3",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
+  }
+}

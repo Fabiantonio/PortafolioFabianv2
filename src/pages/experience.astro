@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { EXPERIENCE } from "../lib/constants";
+---
+
+<Layout title="Fabian Casas Portfolio">
+  <main
+    class="relative flex justify-center items-start max-w-3xl xl:max-w-3xl mx-auto"
+  >
+    <ul class="w-auto">
+      {
+        EXPERIENCE.map((exp) => (
+          <li class="mb-4 mt-7 2xl:mt-14">
+            <div>
+              <p
+                data-cursor="text"
+                class=" text-xl text-[#3d3d3d] dark:text-[#f9d4d4] font-bold"
+              >
+                {exp.title}
+              </p>
+              <p
+                data-cursor="text"
+                class=" text-md text-dark dark:text-white text-wrap font-light"
+              >
+                {exp.description}
+              </p>
+              <p data-cursor="text" class=" text-base text-[#a5a5a5]">
+                {exp.date}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

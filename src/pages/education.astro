@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { EDUCATION } from "../lib/constants";
+---
+<Layout title="Fabian Casas Portfolio">
+  <main
+    class="relative flex justify-center items-center max-w-xs lg:max-w-3xl mx-auto mt-10 2xl:mt-20"
+  >
+    <ol
+      class="relative border-s border-gray-200 dark:border-gray-700 flex flex-col"
+    >
+      {
+        EDUCATION.map((edu) => (
+          <li class="mb-10 ml-6">
+            <span class=" absolute flex items-center justify-center w-6 h-6 bg-[#000000] rounded-full -start-3 ring-8 ring-[#c8c8c8] dark:ring-[#484848] dark:bg-[#2b2b2b]">
+              <svg
+                class="w-2.5 h-2.5 text-[#9c84b7] dark:text-[#7134ff]"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#fff"
+                viewBox="0 0 20 20"
+              >
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+              </svg>
+            </span>
+
+            <h3
+              data-cursor="text"
+              class=" flex items-center mb-1 ml-1 text-lg font-semibold text-[#3d3d3d] black:text-[#f9d4d4] dark:text-[#f9d4d4]"
+            >
+              {edu.position}
+              <span class=" bg-[#000000]  text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-[#2b2b2b] dark:text-white ms-3">
+                Completado
+              </span>
+            </h3>
+            <time
+              data-cursor="text"
+              class=" block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-white"
+            >
+              {edu.start} - {edu.end}
+            </time>
+            <p
+              data-cursor="text"
+              class=" mb-4 text-base font-normal text-black dark:text-white"
+            >
+              {edu.name}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+</Layout>

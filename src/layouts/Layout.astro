@@ -1,0 +1,161 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import "@fontsource-variable/onest";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta property="og:title" content="Portfolio de Fabian Casas" />
+    <meta
+      property="og:description"
+      content="Un vistazo al trabajo de Fabian Casas en desarrollo web y diseño."
+    />
+    <meta property="og:image" content="/portfolio_preview.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio de Fabian Casas" />
+    <meta
+      name="twitter:description"
+      content="Explora proyectos y habilidades de Fabian Casas."
+    />
+    <meta name="twitter:image" content="/portfolio_preview.png" />
+    <meta name="description" content="Portfolio de Fabian Casas" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+    <ViewTransitions />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="dark:bg-[#0e0e0e] bg-[#f9f9f9]">
+    <slot />
+  </body>
+</html>
+
+<script>
+  import { initCursor, disposeCursor } from "ipad-cursor";
+  initCursor();
+  document.addEventListener("astro:page-load", () => {
+    disposeCursor();
+    initCursor();
+  });
+</script>
+
+<script is:inline>
+  (function () {
+    const themePreference = localStorage.getItem("theme") || "system";
+    const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMedia.matches);
+
+    document.documentElement.classList.toggle("dark", isDark);
+  })();
+</script>
+
+<script>
+  /**
+   * Smooth Scroll JS
+   * new SmoothScroll(target,speed,smooth)
+   */
+
+  function init() {
+     SmoothScroll(document, 120, 12);
+  }
+
+  function SmoothScroll(target:any, speed:any, smooth:any) {
+    if (target === document)
+      target =
+        document.scrollingElement ||
+        document.documentElement ||
+        document.body.parentNode ||
+        document.body; // cross browser support for document scrolling
+
+    var moving = false;
+    var pos = target.scrollTop;
+    var frame =
+      target === document.body && document.documentElement
+        ? document.documentElement
+        : target; // safari is the new IE
+
+    target.addEventListener("mousewheel", scrolled, { passive: false });
+    target.addEventListener("DOMMouseScroll", scrolled, { passive: false });
+
+    function scrolled(e:any) {
+      e.preventDefault(); // disable default scrolling
+
+      var delta = normalizeWheelDelta(e);
+
+      pos += -delta * speed;
+      pos = Math.max(
+        0,
+        Math.min(pos, target.scrollHeight - frame.clientHeight)
+      ); // limit scrolling
+
+      if (!moving) update();
+    }
+
+    function normalizeWheelDelta(e:any) {
+      if (e.detail) {
+        if (e.wheelDelta)
+          return (e.wheelDelta / e.detail / 40) * (e.detail > 0 ? 1 : -1); // Opera
+        else return -e.detail / 3; // Firefox
+      } else return e.wheelDelta / 120; // IE,Safari,Chrome
+    }
+
+    function update() {
+      moving = true;
+
+      var delta = (pos - target.scrollTop) / smooth;
+
+      target.scrollTop += delta;
+
+      if (Math.abs(delta) > 0.5) requestFrame(update);
+      else moving = false;
+    }
+
+    var requestFrame = (function () {
+      // requestAnimationFrame cross browser
+      return (
+        window.requestAnimationFrame ||
+        function (func) {
+          window.setTimeout(func, 1000 / 50);
+        }
+      );
+    })();
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    init();
+  });
+</script>
+
+<style is:global>
+  html {
+    font-family: "Onest Variable", system-ui;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    background-color: #1c1c1c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #3d3d3d;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(from #3d3d3d h s l / 0.8);
+  }
+
+  [data-cursor="block"] {
+    cursor: none !important;
+  }
+</style>

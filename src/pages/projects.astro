@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { PROJECTS } from "../lib/constants";
+import GitHub from "../components/icons/icons/GitHub.astro";
+import Link from "../components/icons/Link.astro";
+---
+
+<Layout title="Fabian Casas Portfolio">
+  <main class="w-full h-auto max-w-3xl mx-auto 2xl:mt-[4rem] px-4 overflow-hidden">
+    {
+      PROJECTS.map((project, index) => (
+        <article
+          class="p-7 "
+          data-aos={index % 6 === 0
+                    ? "fade-right"
+                    : index % 6 === 1
+                      ? "fade-left"
+                      : index % 6 === 2
+                        ? "fade-right"
+                        : index % 6 === 3
+                          ? "fade-left"
+                          : index % 6 === 4
+                            ? "fade-right"
+                            : index % 6 === 5
+                              ? "fade-left"
+                              : index % 6 === 6
+          }
+          data-aos-duration="2000"
+        >
+          <h3 data-cursor="text"  class=" text-2xl font-bold  text- dark:text-[#d0aeae]">{project.title}</h3>
+ 
+          <p data-cursor="text"  class=" text-lg mb-4 text-pretty text-black dark:text-white">{project.description}</p>
+          <ul class=" flex gap-x-2 flex-wrap mb-0 sm:flex-row">
+            {project.tags.map((tag) => (
+              <li>
+                <span
+                  data-cursor="block"
+                  class={` flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 m-1`}
+                >
+                  <tag.icon class=" size-4" /> {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="w-full p-7">
+            <div class="flex [&:hover>div]:w-24 [&>div:hover]:w-[30rem] ">
+              {project.images.map((image, index) => (
+                <div
+                  class={`group rounded-lg relative h-96 lg:h-96 overflow-hidden shadow-lg transition-all duration-200  ${index === 0 ? "w-[30rem]" : "w-24"} `}
+                >
+                  <img
+                    class=" h-full object-cover transition-all group-hover:rotate-12 group-hover:scale-125"
+                    src={image}
+                    alt=""
+                  />
+                  <div class="invisible absolute inset-0 bg-gradient-to-b from-transparent to-black/80 group-hover:visible transition-all duration-200">
+                    <div class="absolute left-6 bottom-6">
+                      <div class="flex flex-col gap-4 text-white">
+                        <a
+                          class="hover:scale-110 transition"
+                          href={project.github}
+                          target="_blank"
+                        >
+                          <GitHub class="w-6 h-6" />
+                        </a>
+                        <a
+                          class="hover:scale-110 transition"
+                          href={project.link}
+                          target="_blank"
+                        >
+                          <Link />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </main>
+</Layout>
+
+<script>
+  import AOS from "aos";
+  import "aos/dist/aos.css";
+  document.addEventListener("astro:page-load", () => {
+    AOS.init();
+  });
+</script>

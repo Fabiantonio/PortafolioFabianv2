@@ -1,0 +1,38 @@
+---
+import { getCurrentTimeInChile, formatTimeForChile } from "../lib/helpers";
+import Card from "./Card/index.astro";
+---
+
+<script>
+    import { onCleanup, onMount } from "solid-js";
+    import { formatTimeForChile } from "../lib/helpers";
+
+    let interval: ReturnType<typeof setInterval>;
+
+    function updateClock() {
+        const timeDisplay = document.getElementById("timeDisplay");
+        const now = new Date();
+
+        if (timeDisplay) {
+            timeDisplay.textContent = formatTimeForChile(now);
+            timeDisplay.setAttribute("datetime", now.toISOString());
+        }
+    }
+
+    onMount(() => {
+        interval = setInterval(updateClock, 1000);
+    });
+
+    onCleanup(() => {
+        clearInterval(interval);
+    });
+</script>
+<Card colSpan="lg:col-span-2" rowSpan="md:row-span-2" title="🕰️ Hora Actual en Chile">
+    <time data-cursor="text"
+        datetime=""
+        id="timeDisplay"
+        class="text-4xl xl:text-6xl xl:whitespace-nowrap w-50 xl:w-100 flex justify-center items-center"
+    >
+        {formatTimeForChile(getCurrentTimeInChile())}
+    </time>
+</Card>
