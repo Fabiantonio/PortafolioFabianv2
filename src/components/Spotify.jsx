@@ -25,6 +25,11 @@ const SpotifyStatus = () => {
       }
     };
     fetchData();
+
+    const interval = setInterval(fetchData, 5000); // Ejecutar cada 5 segundos
+
+    return () => clearInterval(interval); // Limpiar el intervalo al desmontar
+    
   }, []);
 
   if (loading) return <h1 class="font-bold text-1xl">Cargando...</h1>;

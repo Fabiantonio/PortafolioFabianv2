@@ -2,52 +2,62 @@
 import Layout from "../layouts/Layout.astro";
 import { EDUCATION } from "../lib/constants";
 ---
-<Layout title="Fabian Casas Portfolio">
-  <main
-    class="relative flex justify-center items-center max-w-xs lg:max-w-3xl mx-auto mt-10 2xl:mt-20"
-  >
-    <ol
-      class="relative border-s border-gray-200 dark:border-gray-700 flex flex-col"
-    >
-      {
-        EDUCATION.map((edu) => (
-          <li class="mb-10 ml-6">
-            <span class=" absolute flex items-center justify-center w-6 h-6 bg-[#000000] rounded-full -start-3 ring-8 ring-[#c8c8c8] dark:ring-[#484848] dark:bg-[#2b2b2b]">
-              <svg
-                class="w-2.5 h-2.5 text-[#9c84b7] dark:text-[#7134ff]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#fff"
-                viewBox="0 0 20 20"
-              >
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-              </svg>
-            </span>
 
-            <h3
-              data-cursor="text"
-              class=" flex items-center mb-1 ml-1 text-lg font-semibold text-[#3d3d3d] black:text-[#f9d4d4] dark:text-[#f9d4d4]"
+<Layout title="Estudios">
+  <div class="max-w-3xl xl:max-w-3xl mx-auto py-10">
+    <div class="tree-wrapper relative md:w-[10px] min-h-[50vh] md:mx-auto">
+      {
+        EDUCATION.map((edu, index) => (
+          <div
+            id="timeline-line"
+            class="flex md:flex-row flex-col md:items-center md:gap-2 group relative top-0 md:left-1/2 md:right-1/2 md:even:translate-x-[-100%] even:translate-x-0 md:w-max w-full z-[1]"
+          >
+            <div
+              data-aos="fade"
+              data-aos-duration="1200"
+              data-aos-delay={index % 2 === 0 ? "300" : "500"}
+              class="timeline-item bg-[#FFFFFF] dark:text-white dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md pointer p-4 dark:bg-gra aspect-square w-[70px] flex items-center justify-center rounded-full md:group-even:order-2 group-even:order-none mx-auto md:mx-0 transition-colors duration-500 ease-in-out"
             >
-              {edu.position}
-              <span class=" bg-[#000000]  text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-[#2b2b2b] dark:text-white ms-3">
-                Completado
-              </span>
-            </h3>
-            <time
-              data-cursor="text"
-              class=" block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-white"
+              <div class="p-1 drop-shadow-2xl bg-gradient-to-bl  from-[#1c1c1c] via-neutral-800 to-[#272727] md:w-10 md:h-10 h-10 w-10 aspect-square rounded-full">
+                <div class="rounded-full h-full w-full bg-slate-100 dark:bg-zinc-900 background-blur-md" />
+              </div>
+            </div>
+            <div
+              data-aos="fade"
+              data-aos-duration="1200"
+              data-aos-delay={index % 2 === 0 ? "300" : "500"}
+              class="md:max-w-sm p-5 my-3 dark:text-white overflow-hidden transition-colors duration-500 ease-in-out bg-[#FFFFFF] dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md rounded-xl"
             >
-              {edu.start} - {edu.end}
-            </time>
-            <p
-              data-cursor="text"
-              class=" mb-4 text-base font-normal text-black dark:text-white"
-            >
-              {edu.name}
-            </p>
-          </li>
+              <p class="course-title">{edu.name}</p>
+              <p class="institution">{edu.location}</p>
+              <p class="location">
+                {edu.start} - {edu.end}
+              </p>
+              <a
+                class="font-semibold underline hover:text-indigo-500 transition-colors duration-500 ease-in-out"
+                target="_blank"
+                href={edu.link}
+              >
+                Link
+              </a>
+              <p class="description">
+                its a short journey of my educational life in the Feni Gov't
+                college and i tried to use time best use of time in this short
+                period
+              </p>
+              <h2 class="result">Check</h2>
+            </div>
+          </div>
         ))
       }
-    </ol>
-  </main>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  import AOS from "aos";
+  import "aos/dist/aos.css";
+  document.addEventListener("astro:page-load", () => {
+    AOS.init();
+  });
+</script>

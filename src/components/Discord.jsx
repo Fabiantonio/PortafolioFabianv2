@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'preact/hooks';
+import "../styles/loader.css";
 
 const DiscordStatus = () => {
     const [data, setData] = useState(null);
@@ -33,16 +34,19 @@ const DiscordStatus = () => {
         };
 
         fetchData();
+        const interval = setInterval(fetchData, 5000); // Ejecutar cada 5 segundos
+
 
         // Cleanup preconnect tags
         return () => {
             document.head.removeChild(linkLanyard);
             document.head.removeChild(linkDiscord);
+            clearInterval(interval);
         };
     }, []);
 
-    if (loading) return <h1 class="font-bold text-1xl">Cargando...</h1>;
-    if (error) return <p>Error: {error}</p>;
+    if (loading) return <div class="loader"></div>;
+    if (error) return <p>{error}</p>;
 
     const { discord_user, discord_status } = data;
 
@@ -67,9 +71,16 @@ const DiscordStatus = () => {
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                     </span>
                 )}
+                 {discord_status === 'idle' && (
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                    </span>
+                )}
             </div>
         </div>
     );
 };
+
 
 export default DiscordStatus;
