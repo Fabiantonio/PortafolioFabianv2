@@ -42,7 +42,19 @@ import { ViewTransitions } from "astro:transitions";
 
 <script>
   import { initCursor, disposeCursor } from "ipad-cursor";
-  initCursor();
+
+  const config = {
+  normalStyle: {
+    backdropBlur: "20px",
+    background: "#808080 "
+  },
+  blockStyle: {
+    backdropBlur: "0px",
+    durationBackdropFilter: "0.5s",
+  },
+};
+
+  initCursor(config);
   document.addEventListener("astro:page-load", () => {
     disposeCursor();
     initCursor();

@@ -205,24 +205,24 @@ export const EXPERIENCE = [
         title: "Programación de Algoritmos / Modelamiento de Base de Datos",
         description:
             "El 1er semestre aprendí el flujo de datos al programar diferentes algoritmos, primero en PSeInt y luego en Python, También aprendí a modelar bbdd, crear entidades y relacionarlas entre sí.",
-        link: "",
+        link: "1er Semestre",
     },
     {
         date: "Agosto 2022",
         title: "Desarrollo de Software de Escritorio / Consulta de Base de Datos",
         description: "El 2do semestre aprendí a desarrollar un software de escritorio con Java y MySQL en NetBeans que consistía en un CRUD, Tambien aprendí a consultar bbdd con Queries y filtros de búsqueda.",
-        link: "",
+        link: "2do Semestre",
     },
     {
         date: "Marzo 2023",
         title: "Programación Web / Programación de Base de Datos",
         description: "El 3er Semestre aprendí a desarrollar páginas web con Html, Css, Javascript y Django (Python) Construí un E-Commerce enfocado a una tienda para mascotas. Tambien aprendí a Programar en bbdd ya no solo hacer consultas básicas sino que tener bloques de código dentro de las Queries para optimizar las búsquedas y automatizar diferentes acciones",
-        link: "",
+        link: "3er Semestre",
     },
     {
         date: "Agosto 2023",
         title: "Programación de Aplicaciones Móviles / Cálidad de Software",
         description: "El 4to semestre aprendí a desarrollar aplicaciones para celulares con Ionic, Angular y FireBase, Construí una aplicacion para Agilizar la toma de asistencia de los profesores en Duoc UC",
-        link: "",
+        link: "4to Semestre",
     },
 ];
