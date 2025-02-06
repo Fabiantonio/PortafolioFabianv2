@@ -10,7 +10,7 @@ import { EDUCATION } from "../lib/constants";
         EDUCATION.map((edu, index) => (
           <div
             id="timeline-line"
-            class="flex md:flex-row flex-col md:items-center md:gap-2 group relative top-0 md:left-1/2 md:right-1/2 md:even:translate-x-[-100%] even:translate-x-0 md:w-max w-full z-[1]"
+            class="flex md:flex-row flex-col md:items-center md:gap-2 group relative top-0 md:left-1/2 md:right-1/2 md:even:translate-x-[-100%] even:translate-x-0 md:w-max w-full z-[1] px-10"
           >
             <div
               data-aos="fade"
@@ -26,26 +26,21 @@ import { EDUCATION } from "../lib/constants";
               data-aos="fade"
               data-aos-duration="1200"
               data-aos-delay={index % 2 === 0 ? "300" : "500"}
-              class="md:max-w-sm p-5 my-3 dark:text-white overflow-hidden transition-colors duration-500 ease-in-out bg-[#FFFFFF] dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md rounded-xl"
+              class="md:max-w-sm  p-7 my-3 dark:text-white overflow-hidden transition-colors duration-500 ease-in-out bg-[#FFFFFF] dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md rounded-xl"
             >
-              <p class="course-title">{edu.name}</p>
-              <p class="institution">{edu.location}</p>
-              <p class="location">
+              <p class="course-title text-5xl font-semibold">{edu.name}</p>
+              <p class="institution text-lg">{edu.location}</p>
+              <p class="location text-lg">
                 {edu.start} - {edu.end}
               </p>
               <a
-                class="font-semibold underline hover:text-indigo-500 transition-colors duration-500 ease-in-out"
+                class="font-semibold text-lg underline hover:text-indigo-500 transition-colors duration-500 ease-in-out"
                 target="_blank"
                 href={edu.link}
               >
                 Link
               </a>
-              <p class="description">
-                its a short journey of my educational life in the Feni Gov't
-                college and i tried to use time best use of time in this short
-                period
-              </p>
-              <h2 class="result">Check</h2>
+
             </div>
           </div>
         ))
