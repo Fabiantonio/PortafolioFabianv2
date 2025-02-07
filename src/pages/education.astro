@@ -4,48 +4,118 @@ import { EDUCATION } from "../lib/constants";
 ---
 
 <Layout title="Estudios">
-  <div class="max-w-3xl xl:max-w-3xl mx-auto py-10">
-    <div class="tree-wrapper relative md:w-[10px] min-h-[50vh] md:mx-auto">
+  <div class="max-w-3xl mx-auto mt-20">
+    <ul>
       {
         EDUCATION.map((edu, index) => (
-          <div
-            id="timeline-line"
-            class="flex md:flex-row flex-col md:items-center md:gap-2 group relative top-0 md:left-1/2 md:right-1/2 md:even:translate-x-[-100%] even:translate-x-0 md:w-max w-full z-[1] px-10"
-          >
-            <div
-              data-aos="fade"
-              data-aos-duration="1200"
-              data-aos-delay={index % 2 === 0 ? "300" : "500"}
-              class="timeline-item bg-[#FFFFFF] dark:text-white dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md pointer p-4 dark:bg-gra aspect-square w-[70px] flex items-center justify-center rounded-full md:group-even:order-2 group-even:order-none mx-auto md:mx-0 transition-colors duration-500 ease-in-out"
-            >
-              <div class="p-1 drop-shadow-2xl bg-gradient-to-bl  from-[#1c1c1c] via-neutral-800 to-[#272727] md:w-10 md:h-10 h-10 w-10 aspect-square rounded-full">
-                <div class="rounded-full h-full w-full bg-slate-100 dark:bg-zinc-900 background-blur-md" />
+          <li data-aos="fade" data-aos-duration="2000" id={`card${index + 1}`}>
+            <div class="flex mb-20 flex-col justify-between h-auto group overflow-hidden transition-colors duration-500 ease-in-out bg-white dark:bg-[#131313] p-6 border border-[#E0E0E0] dark:border-[#2c2c2c] shadow-lg rounded-xl hover:border-indigo-500 dark:hover:border-indigo-500">
+              <div>
+                <div class="flex items-center gap-3 mb-4">
+                  <div data-cursor="block" class="p-3 bg-indigo-100 dark:bg-[#1a1a1a] rounded-lg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-8 w-8 text-indigo-500"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-4xl font-bold text-gray-800 dark:text-white">
+                      {edu.position}
+                    </h3>
+                    <a
+                      href={edu.link}
+                      target="_blank"
+                      class="text-xl text-indigo-500 font-medium hover:text-indigo-600 transition-colors"
+                    >
+                      {edu.name} ↗
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-300 mb-6">
+                  <div data-cursor="block" class="flex items-center gap-2 bg-indigo-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span>
+                      {edu.start} - {edu.end}
+                    </span>
+                  </div>
+
+                  <div data-cursor="block" class="flex items-center gap-2 bg-indigo-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    <span>{edu.location}</span>
+                  </div>
+                </div>
+
+                {edu.tasks.length > 0 && (
+                  <div class="mb-6">
+                    <h4 class="text-sm font-semibold text-indigo-500 mb-2 uppercase">
+                      Logros:
+                    </h4>
+                    <ul class="space-y-2">
+                      {edu.tasks.map((task) => (
+                        <li class="flex items-start gap-2 text-gray-600 dark:text-gray-400">
+                          <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2" />
+                          <span class="text-sm sm:text-base">{task}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div class="mt-4">
+                <div class="flex items-center justify-between text-sm mb-2">
+                  <span class="text-indigo-500">Progreso del semestre</span>
+                  <span class="text-gray-500 dark:text-gray-400">100%</span>
+                </div>
+                <div class="h-2 bg-gray-200 dark:bg-[#2c2c2c] rounded-full">
+                  <div
+                    class="h-2 bg-indigo-500 rounded-full transition-all duration-500"
+                    style="width: 100%;"
+                  />
+                </div>
               </div>
             </div>
-            <div
-              data-aos="fade"
-              data-aos-duration="1200"
-              data-aos-delay={index % 2 === 0 ? "300" : "500"}
-              class="md:max-w-sm  p-7 my-3 dark:text-white overflow-hidden transition-colors duration-500 ease-in-out bg-[#FFFFFF] dark:bg-[#131313] border-[1px] dark:border-[#2c2c2c] border-[#E0E0E0] shadow-md rounded-xl"
-            >
-              <p class="course-title text-5xl font-semibold text-indigo-500 dark:text-[#f9d4d4]">{edu.name}</p>
-              <p class="institution text-lg">{edu.location}</p>
-              <p class="location text-lg">
-                {edu.start} - {edu.end}
-              </p>
-              <a
-                class="font-semibold text-lg underline hover:text-indigo-500 transition-colors duration-500 ease-in-out"
-                target="_blank"
-                href={edu.link}
-              >
-                Link
-              </a>
-
-            </div>
-          </div>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
 </Layout>
 

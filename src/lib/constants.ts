@@ -202,27 +202,30 @@ export const EDUCATION = [
 export const EXPERIENCE = [
     {
         date: "Marzo 2022",
-        title: "Programación de Algoritmos / Modelamiento de Base de Datos",
-        description:
-            "El 1er semestre aprendí el flujo de datos al programar diferentes algoritmos, primero en PSeInt y luego en Python, También aprendí a modelar bbdd, crear entidades y relacionarlas entre sí.",
+        title: "Fundamentos de Programación y BBDD",
+        description: "Primer semestre enfocado en lógica de programación y modelamiento de datos:",
         link: "1er Semestre",
+        technologies: ["PSeInt", "Python", "SQL", "Diagramas ER"]
     },
     {
         date: "Agosto 2022",
-        title: "Desarrollo de Software de Escritorio / Consulta de Base de Datos",
-        description: "El 2do semestre aprendí a desarrollar un software de escritorio con Java y MySQL en NetBeans que consistía en un CRUD, Tambien aprendí a consultar bbdd con Queries y filtros de búsqueda.",
+        title: "Desarrollo de Software y Consultas Avanzadas",
+        description: "Segundo semestre trabajando con aplicaciones de escritorio y consultas complejas:",
         link: "2do Semestre",
+        technologies: ["Java", "NetBeans", "CRUD", "SQL Queries"]
     },
     {
         date: "Marzo 2023",
-        title: "Programación Web / Programación de Base de Datos",
-        description: "El 3er Semestre aprendí a desarrollar páginas web con Html, Css, Javascript y Django (Python) Construí un E-Commerce enfocado a una tienda para mascotas. Tambien aprendí a Programar en bbdd ya no solo hacer consultas básicas sino que tener bloques de código dentro de las Queries para optimizar las búsquedas y automatizar diferentes acciones",
+        title: "Desarrollo Web y Programación en BBDD",
+        description: "Tercer semestre construyendo aplicaciones web y optimización de bases de datos:",
         link: "3er Semestre",
+        technologies: ["HTML/CSS", "JavaScript", "Django", "SQL"]
     },
     {
         date: "Agosto 2023",
-        title: "Programación de Aplicaciones Móviles / Cálidad de Software",
-        description: "El 4to semestre aprendí a desarrollar aplicaciones para celulares con Ionic, Angular y FireBase, Construí una aplicacion para Agilizar la toma de asistencia de los profesores en Duoc UC",
+        title: "Apps Móviles y Calidad de Software",
+        description: "Cuarto semestre desarrollando aplicaciones móviles y testing:",
         link: "4to Semestre",
+        technologies: ["Ionic", "Angular", "Firebase", "QA"]
     },
 ];
