@@ -14,12 +14,12 @@ import { EDUCATION } from "../lib/constants";
         {
             EDUCATION.slice(0, 1).map((exp) => (
                 <div>
-                    <p class="text-lg  text-indigo-500 font-semibold">{exp.position}</p>
+                    <p class="text-lg  dark:text-indigo-500 text-orange-600 font-semibold">{exp.position}</p>
                     <p class="text-white-500">{exp.name}</p>
                     <p class="text-white-500">
                         {exp.start} - {exp.end}
                     </p>
-                    <p class="underline font-semibold hover:text-indigo-500 transition-colors duration-300" >ver más</p>
+                    <p class="underline font-semibold dark:hover:text-indigo-500 hover:text-orange-600 transition-colors duration-300" >ver más</p>
                 </div>
             ))
         }

@@ -7,12 +7,12 @@ import { EXPERIENCE } from "../lib/constants";
   <main class="flex flex-col justify-center items-start md:max-w-3xl mx-auto mb-16 px-4">
     <div class="relative w-full" >
       {/* Línea del timeline */}
-      <div  class="absolute left-8 top-0 h-full w-1 bg-indigo-200 dark:bg-[#2c2c2c] origin-top"></div>
+      <div  class="absolute left-8 top-0 h-full w-1 bg-orange-100 dark:bg-[#2c2c2c] origin-top"></div>
       
       {EXPERIENCE.map((exp, index) => (
         <div data-aos="fade" data-aos-duration="2000" class="relative pl-24 py-8 group">
           {/* Círculo del timeline */}
-          <div class="absolute left-8 top-12 -ml-3.5 h-8 w-8 transition-transform duration-200 bg-indigo-500 rounded-full flex items-center justify-center text-white shadow-lg">
+          <div class="absolute left-8 top-12 -ml-3.5 h-8 w-8 transition-transform duration-200 dark:bg-indigo-500 bg-orange-600  rounded-full flex items-center justify-center text-white shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {index === 0 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />}
               {index === 1 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />}
@@ -22,11 +22,11 @@ import { EXPERIENCE } from "../lib/constants";
           </div>
 
           {/* Contenido */}
-          <div class="flex flex-col md:flex-row gap-6 p-6 bg-white dark:bg-[#131313] border border-[#E0E0E0] dark:border-[#2c2c2c] rounded-xl shadow-md hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors">
+          <div class="flex flex-col md:flex-row gap-6 p-6 bg-white dark:bg-[#131313] border border-[#E0E0E0] dark:border-[#2c2c2c] rounded-xl shadow-md hover:border-orange-600 dark:hover:border-indigo-500 transition-colors">
             {/* Sección izquierda */}
             <div class="md:w-48 flex-shrink-0">
-              <div data-cursor="block" class="bg-indigo-100 dark:bg-[#1a1a1a] px-3 py-1 rounded-full inline-block">
-                <span class="text-sm font-semibold text-indigo-500">{exp.link}</span>
+              <div data-cursor="block" class="bg-orange-100 dark:bg-[#1a1a1a] px-3 py-1 rounded-full inline-block">
+                <span class="text-sm font-semibold dark:text-indigo-500 text-orange-600">{exp.link}</span>
               </div>
               <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{exp.date}</p>
             </div>
@@ -39,7 +39,7 @@ import { EXPERIENCE } from "../lib/constants";
               {/* Tecnologías */}
               <div class="flex flex-wrap gap-2">
                 {exp.technologies.map(tech => (
-                  <span data-cursor="block" class="px-3 py-1 text-xs font-medium bg-indigo-50 dark:bg-[#1a1a1a] text-indigo-600 dark:text-indigo-400 rounded-full">
+                  <span data-cursor="block" class="px-3 py-1 text-xs font-medium bg-orange-50 dark:bg-[#1a1a1a] text-orange-600 dark:text-indigo-400 rounded-full">
                     {tech}
                   </span>
                 ))}
@@ -64,6 +64,5 @@ import { EXPERIENCE } from "../lib/constants";
 <style>
   .group:hover .absolute.left-8.top-12 {
     transform: scale(1.15);
-    @apply bg-indigo-600;
   }
 </style>

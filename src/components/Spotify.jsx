@@ -60,9 +60,9 @@ const SpotifyStatus = () => {
             <p>{truncateText(spotify.artist, 15)}</p>
           </div>
           <div className="iconn">
-            <span className="span" />
-            <span className="span" />
-            <span className="span" />
+            <span className="span bg-orange-600 dark:bg-indigo-500" />
+            <span className="span bg-orange-600 dark:bg-indigo-500" />
+            <span className="span bg-orange-600 dark:bg-indigo-500" />
           </div>
         </div>
       ) : (

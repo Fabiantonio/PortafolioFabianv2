@@ -9,13 +9,13 @@ import { EDUCATION } from "../lib/constants";
       {
         EDUCATION.map((edu, index) => (
           <li data-aos="fade" data-aos-duration="2000" id={`card${index + 1}`}>
-            <div class="flex mb-20 flex-col justify-between h-auto group overflow-hidden transition-colors duration-500 ease-in-out bg-white dark:bg-[#131313] p-6 border border-[#E0E0E0] dark:border-[#2c2c2c] shadow-lg rounded-xl hover:border-indigo-500 dark:hover:border-indigo-500">
+            <div class="flex mb-20 flex-col justify-between h-auto group overflow-hidden transition-colors duration-500 ease-in-out bg-white dark:bg-[#131313] p-6 border border-[#E0E0E0] dark:border-[#2c2c2c] shadow-lg rounded-xl hover:border-orange-600 dark:hover:border-indigo-500">
               <div>
                 <div class="flex items-center gap-3 mb-4">
-                  <div data-cursor="block" class="p-3 bg-indigo-100 dark:bg-[#1a1a1a] rounded-lg">
+                  <div data-cursor="block" class="p-3 bg-orange-100 dark:bg-[#1a1a1a] rounded-lg">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-8 w-8 text-indigo-500"
+                      class="h-8 w-8 text-orange-600 dark:text-indigo-500"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -29,7 +29,7 @@ import { EDUCATION } from "../lib/constants";
                     <a
                       href={edu.link}
                       target="_blank"
-                      class="text-xl text-indigo-500 font-medium hover:text-indigo-600 transition-colors"
+                      class="text-xl dark:text-indigo-500 text-orange-600 font-medium dark:hover:text-indigo-600 hover:text-orange-600 transition-colors"
                     >
                       {edu.name} ↗
                     </a>
@@ -37,7 +37,7 @@ import { EDUCATION } from "../lib/constants";
                 </div>
 
                 <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-300 mb-6">
-                  <div data-cursor="block" class="flex items-center gap-2 bg-indigo-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
+                  <div data-cursor="block" class="flex items-center gap-2 bg-orange-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5"
@@ -57,7 +57,7 @@ import { EDUCATION } from "../lib/constants";
                     </span>
                   </div>
 
-                  <div data-cursor="block" class="flex items-center gap-2 bg-indigo-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
+                  <div data-cursor="block" class="flex items-center gap-2 bg-orange-50 dark:bg-[#1a1a1a] px-3 py-1 rounded-full">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-5 w-5"
@@ -84,13 +84,13 @@ import { EDUCATION } from "../lib/constants";
 
                 {edu.tasks.length > 0 && (
                   <div class="mb-6">
-                    <h4 class="text-sm font-semibold text-indigo-500 mb-2 uppercase">
+                    <h4 class="text-sm font-semibold dark:text-indigo-500 text-orange-600 mb-2 uppercase">
                       Logros:
                     </h4>
                     <ul class="space-y-2">
                       {edu.tasks.map((task) => (
                         <li class="flex items-start gap-2 text-gray-600 dark:text-gray-400">
-                          <div class="w-2 h-2 bg-indigo-500 rounded-full mt-2" />
+                          <div class="w-2 h-2 bg-orange-600 dark:bg-indigo-500 rounded-full mt-2" />
                           <span class="text-sm sm:text-base">{task}</span>
                         </li>
                       ))}
@@ -101,12 +101,12 @@ import { EDUCATION } from "../lib/constants";
 
               <div class="mt-4">
                 <div class="flex items-center justify-between text-sm mb-2">
-                  <span class="text-indigo-500">Progreso del semestre</span>
+                  <span class="dark:text-indigo-500 text-orange-600">Progreso del semestre</span>
                   <span class="text-gray-500 dark:text-gray-400">100%</span>
                 </div>
                 <div class="h-2 bg-gray-200 dark:bg-[#2c2c2c] rounded-full">
                   <div
-                    class="h-2 bg-indigo-500 rounded-full transition-all duration-500"
+                    class="h-2 dark:bg-indigo-500 bg-orange-600 rounded-full transition-all duration-500"
                     style="width: 100%;"
                   />
                 </div>

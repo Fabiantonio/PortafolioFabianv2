@@ -1,86 +1,99 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from "preact/hooks";
 import "../styles/loader.css";
 
 const DiscordStatus = () => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        // Preconnect to external resources
-        const linkLanyard = document.createElement('link');
-        linkLanyard.rel = 'preconnect';
-        linkLanyard.href = 'https://api.lanyard.rest';
-        document.head.appendChild(linkLanyard);
+  useEffect(() => {
+    // Preconnect to external resources
+    const linkLanyard = document.createElement("link");
+    linkLanyard.rel = "preconnect";
+    linkLanyard.href = "https://api.lanyard.rest";
+    document.head.appendChild(linkLanyard);
 
-        const linkDiscord = document.createElement('link');
-        linkDiscord.rel = 'preconnect';
-        linkDiscord.href = 'https://cdn.discordapp.com';
-        document.head.appendChild(linkDiscord);
+    const linkDiscord = document.createElement("link");
+    linkDiscord.rel = "preconnect";
+    linkDiscord.href = "https://cdn.discordapp.com";
+    document.head.appendChild(linkDiscord);
 
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://api.lanyard.rest/v1/users/953083781785464842');
-                if (!response.ok) {
-                    throw new Error('Error al obtener datos de Discord');
-                }
-                const result = await response.json();
-                setData(result.data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.lanyard.rest/v1/users/953083781785464842"
+        );
+        if (!response.ok) {
+          throw new Error("Error al obtener datos de Discord");
+        }
+        const result = await response.json();
+        setData(result.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        fetchData();
-        const interval = setInterval(fetchData, 5000); // Ejecutar cada 5 segundos
+    fetchData();
+    const interval = setInterval(fetchData, 5000); // Ejecutar cada 5 segundos
 
+    // Cleanup preconnect tags
+    return () => {
+      document.head.removeChild(linkLanyard);
+      document.head.removeChild(linkDiscord);
+      clearInterval(interval);
+    };
+  }, []);
 
-        // Cleanup preconnect tags
-        return () => {
-            document.head.removeChild(linkLanyard);
-            document.head.removeChild(linkDiscord);
-            clearInterval(interval);
-        };
-    }, []);
+  if (loading) return <div class="loader"></div>;
+  if (error) return <p>{error}</p>;
 
-    if (loading) return <div class="loader"></div>;
-    if (error) return <p>{error}</p>;
+  const { discord_user, discord_status } = data;
 
-    const { discord_user, discord_status } = data;
+  return (
+    <div className="discord-status flex gap-4 items-center">
+      <img
+        src={`https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png`}
+        alt={`${discord_user.username}'s avatar`}
+        class="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full"
+      />
+      <svg
+        viewBox="0 0 256 199"
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid"
+      >
+        <path
+          d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.804 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.804 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z"
+          fill="currentColor"
+        ></path>
+      </svg>
 
-    return (
-        <div className="discord-status flex gap-4 items-center">
-            <img
-                src={`https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png`}
-                alt={`${discord_user.username}'s avatar`}
-                class="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full"
-            />
-            <p class="text-base font-semi">@{discord_user.username}</p>
-            <div>
-                {discord_status === 'online' && (
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                )}
-                {discord_status === 'offline' && (
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                    </span>
-                )}
-                 {discord_status === 'idle' && (
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
-                    </span>
-                )}
-            </div>
-        </div>
-    );
+      <p class="text-base font-semi">{discord_user.username}</p>
+      <div>
+        {discord_status === "online" && (
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+        )}
+        {discord_status === "offline" && (
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+          </span>
+        )}
+        {discord_status === "idle" && (
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+          </span>
+        )}
+      </div>
+    </div>
+  );
 };
-
 
 export default DiscordStatus;
