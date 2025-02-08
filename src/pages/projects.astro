@@ -6,30 +6,59 @@ import Link from "../components/icons/Link.astro";
 ---
 
 <Layout title="Proyectos">
-  <main class="w-full h-auto max-w-3xl mx-auto 2xl:mt-[4rem] px-4 overflow-hidden">
+  <main
+    class="w-full h-auto max-w-3xl mx-auto 2xl:mt-[4rem] px-4 overflow-hidden"
+  >
     {
       PROJECTS.map((project, index) => (
         <article
           class="p-4 md:p-7"
-          data-aos={index % 6 === 0
-                    ? "fade-right"
-                    : index % 6 === 1
-                      ? "fade-left"
-                      : index % 6 === 2
-                        ? "fade-right"
-                        : index % 6 === 3
-                          ? "fade-left"
-                          : index % 6 === 4
-                            ? "fade-right"
-                            : index % 6 === 5
-                              ? "fade-left"
-                              : index % 6 === 6
+          data-aos={
+            index % 6 === 0
+              ? "fade-right"
+              : index % 6 === 1
+                ? "fade-left"
+                : index % 6 === 2
+                  ? "fade-right"
+                  : index % 6 === 3
+                    ? "fade-left"
+                    : index % 6 === 4
+                      ? "fade-right"
+                      : index % 6 === 5
+                        ? "fade-left"
+                        : index % 6 === 6
           }
           data-aos-duration="2000"
         >
-          <h3 data-cursor="text"  class="text-xl md:text-2xl font-bold text-orange-600 dark:text-indigo-500">{project.title}</h3>
- 
-          <p data-cursor="text"  class="text-base md:text-lg mb-4 text-pretty text-black dark:text-white">{project.description}</p>
+          <h3
+            data-cursor="text"
+            class="text-xl md:text-2xl font-bold text-orange-600 dark:text-indigo-500 hidden md:block"
+          >
+            {project.title}
+          </h3>
+          <div class="flex flex-row gap-4 text-white md:hidden">
+            <h3
+              data-cursor="text"
+              class="text-xl md:text-2xl font-bold text-orange-600 dark:text-indigo-500"
+            >
+              {project.title}
+            </h3>
+
+            <a href={project.github} target="_blank">
+              <GitHub class="w-5 h-5 hover:scale-110 transition" />
+            </a>
+            <a href={project.link} target="_blank">
+              <Link class="w-5 h-5 hover:scale-110 transition" />
+            </a>
+          </div>
+
+          <p
+            data-cursor="text"
+            class="text-base md:text-lg mb-4 text-pretty text-black dark:text-white"
+          >
+            {project.description}
+          </p>
+
           <ul class=" flex gap-x-2 flex-wrap mb-0 sm:flex-row">
             {project.tags.map((tag) => (
               <li>
@@ -44,38 +73,39 @@ import Link from "../components/icons/Link.astro";
           </ul>
 
           <div class="w-full p-2 md:p-7">
-          <div class="flex flex-col md:flex-row [&:hover>div]:w-24 [&>div:hover]:w-[30rem]">
-            {project.images.map((image, imgIndex) => (
-              <div
-                class={`group rounded-lg relative h-48 md:h-96 overflow-hidden shadow-lg transition-all duration-200 ${
-                  imgIndex === 0 
-                    ? "w-full md:w-[30rem]" 
-                    : "hidden md:block md:w-24" // Oculta otras imágenes en mobile
-                }`}
-              >
-                <img
-                  class="h-full w-full object-cover transition-all md:group-hover:rotate-12 md:group-hover:scale-125"
-                  src={image}
-                  alt={project.title}
-                />
-                <div class="invisible absolute inset-0 bg-gradient-to-b from-transparent to-black/80 md:group-hover:visible">
-                  <div class="absolute left-6 bottom-6">
-                    <div class="flex flex-col gap-4 text-white">
-                      <a href={project.github} target="_blank">
-                        <GitHub class="w-6 h-6 hover:scale-110 transition" />
-                      </a>
-                      <a href={project.link} target="_blank">
-                        <Link class="hover:scale-110 transition" />
-                      </a>
+            <div class="flex flex-col md:flex-row [&:hover>div]:w-24 [&>div:hover]:w-[30rem]">
+              {project.images.map((image, imgIndex) => (
+                <div
+                  class={`group rounded-lg relative h-48 md:h-96 overflow-hidden shadow-lg transition-all duration-200 ${
+                    imgIndex === 0
+                      ? "w-full md:w-[30rem]"
+                      : "hidden md:block md:w-24" // Oculta otras imágenes en mobile
+                  }`}
+                >
+                  <img
+                    class="h-full w-full object-cover transition-all md:group-hover:rotate-12 md:group-hover:scale-125"
+                    src={image}
+                    alt={project.title}
+                  />
+                  <div class="invisible absolute inset-0 bg-gradient-to-b from-transparent to-black/80 md:group-hover:visible">
+                    <div class="absolute left-6 bottom-6">
+                      <div class="flex flex-col gap-4 text-white">
+                        <a href={project.github} target="_blank">
+                          <GitHub class="w-6 h-6 hover:scale-110 transition" />
+                        </a>
+                        <a href={project.link} target="_blank">
+                          <Link class="hover:scale-110 transition" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </article>
-    ))}
+        </article>
+      ))
+    }
   </main>
 </Layout>
 
