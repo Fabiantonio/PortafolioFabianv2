@@ -45,7 +45,7 @@ const SpotifyStatus = () => {
   };
 
   return (
-    <div className="spotify-status" class="flex gap-4 items-center p-4  rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="spotify-status" class="flex gap-4 items-center p-4">
       {spotify ? (
         <div class="flex gap-4 items-center">
           <img

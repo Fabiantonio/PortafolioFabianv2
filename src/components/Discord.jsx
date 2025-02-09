@@ -52,7 +52,7 @@ const DiscordStatus = () => {
   const { discord_user, discord_status } = data;
 
   return (
-    <div className="discord-status flex gap-4 items-center p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="discord-status flex gap-4 items-center p-4 rounded-lg ">
       <img
         src={`https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png`}
         alt={`${discord_user.username}'s avatar`}
