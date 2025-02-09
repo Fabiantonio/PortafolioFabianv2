@@ -55,7 +55,7 @@ const SpotifyStatus = () => {
             width="48"
             height="48"
           />
-          <div class="text-sm text-white">
+          <div class="text-sm text-black dark:text-white">
             <p class="font-semibold">{truncateText(spotify.song, 9)}</p>
             <p class="text-gray-400">{truncateText(spotify.artist, 11)}</p>
           </div>
@@ -74,7 +74,7 @@ const SpotifyStatus = () => {
             width="64"
             height="64"
           />
-          <div title="404" class="error text-white text-lg">
+          <div title="404" class="error dark:text-white text-black text-lg">
             404
           </div>
         </div>

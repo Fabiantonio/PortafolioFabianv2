@@ -60,7 +60,7 @@ const DiscordStatus = () => {
       />
 
 
-      <p class="text-base font-semibold text-white">{discord_user.username}</p>
+      <p class="text-base font-semibold text-black dark:text-white">{discord_user.username}</p>
       <div>
         {discord_status === "online" && (
           <span class="relative flex h-3 w-3">
