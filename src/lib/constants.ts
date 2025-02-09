@@ -64,6 +64,49 @@ export const TAGS = {
     },
 };
 
+export const SKILLS = [
+{
+        name: "Html",
+        class: "bg-[#ffdccd] text-black",
+        icon: HtmlIcon,
+    },
+{
+        name: "Css",
+        class: "bg-[#bdd3dc] text-black",
+        icon: CssIcon,
+    },
+ {
+        name: "Javascript",
+        class: "bg-[#f0e9bc] text-black",
+        icon: JavascriptIcon,
+    },
+{
+        name: "Django",
+        class: "bg-[#123226] text-white",
+        icon: DjangoIcon,
+    },
+ {
+        name: "Typescript",
+        class: "bg-[#bdd3dc] text-black",
+        icon: TypeScriptIcon,
+    },
+ {
+        name: "Angular",
+        class: "bg-[#e5d8f1] text-black",
+        icon: AngularIcon,
+    },
+ {
+        name: "Ionic",
+        class: "bg-[#0b1933] text-white",
+        icon: IonicIcon,
+    },
+{
+        name: "Firebase",
+        class: "bg-[#f6ede4] text-black",
+        icon: FireBase,
+    },
+]
+
 export const PROJECTS = [
     {
         title: "LittleShop",

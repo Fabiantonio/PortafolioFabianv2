@@ -45,24 +45,24 @@ const SpotifyStatus = () => {
   };
 
   return (
-    <div className="spotify-status" class="flex gap-4 items-center">
+    <div className="spotify-status" class="flex gap-4 items-center p-4  rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       {spotify ? (
         <div class="flex gap-4 items-center">
           <img
             src={spotify.album_art_url}
             alt="Album Art"
-            class="w-auto h-12 rounded-md"
-            width="48" // Agregar un valor de ancho adecuado
-            height="48" // Agregar un valor de altura correspondiente
+            class="w-12 h-12 rounded-md shadow-md"
+            width="48"
+            height="48"
           />
-          <div class="text-sm">
-            <p>{truncateText(spotify.song, 15)}</p>
-            <p>{truncateText(spotify.artist, 15)}</p>
+          <div class="text-sm text-white">
+            <p class="font-semibold">{truncateText(spotify.song, 9)}</p>
+            <p class="text-gray-400">{truncateText(spotify.artist, 11)}</p>
           </div>
-          <div className="iconn">
-            <span className="span bg-orange-600 dark:bg-indigo-500" />
-            <span className="span bg-orange-600 dark:bg-indigo-500" />
-            <span className="span bg-orange-600 dark:bg-indigo-500" />
+          <div className="iconn flex gap-1">
+            <span className="span bg-orange-600 dark:bg-indigo-500 w-1 h-6 rounded-full animate-bounce" />
+            <span className="span bg-orange-600 dark:bg-indigo-500 w-1 h-6 rounded-full animate-bounce delay-100" />
+            <span className="span bg-orange-600 dark:bg-indigo-500 w-1 h-6 rounded-full animate-bounce delay-200" />
           </div>
         </div>
       ) : (
@@ -70,11 +70,11 @@ const SpotifyStatus = () => {
           <img
             src="/red_spotify.webp"
             alt="Logo de Spotify"
-            class="w-auto h-12"
+            class="w-12 h-12"
             width="64"
             height="64"
           />
-          <div title="404" class="error">
+          <div title="404" class="error text-white text-lg">
             404
           </div>
         </div>
