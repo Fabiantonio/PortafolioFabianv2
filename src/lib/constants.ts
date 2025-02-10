@@ -80,6 +80,11 @@ export const SKILLS = [
         class: "bg-[#f0e9bc] text-black",
         icon: JavascriptIcon,
     },
+    {
+        name: "Astro",
+        class: "bg-[#f0e9bc] text-black",
+        icon: JavascriptIcon,
+    },
 {
         name: "Django",
         class: "bg-[#123226] text-white",
