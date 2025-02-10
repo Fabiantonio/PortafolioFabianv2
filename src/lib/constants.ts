@@ -9,6 +9,8 @@ import AngularIcon from "../components/icons/icons/AngularIcon.astro";
 import IonicIcon from "../components/icons/icons/IonicIcon.astro";
 import FireBase from "../components/icons/icons/FireBase.astro";
 import BoostrapIcon from "../components/icons/icons/boostrapIcon.astro";
+import AstroIcon from "../components/icons/icons/AstroIcon.astro";
+import TailwindIcon from "../components/icons/icons/TailwindIcon.astro";
 
 
 export const TAGS = {
@@ -16,6 +18,16 @@ export const TAGS = {
         name: "Html",
         class: "bg-[#ffdccd] text-black",
         icon: HtmlIcon,
+    },
+    TAILWIND: {
+        name: "Tailwind",
+        class: "bg-[#091538] text-white",
+        icon: TailwindIcon,
+    },
+    ASTRO: {
+        name: "Astro",
+        class: "bg-[#23262f] text-white",
+        icon: AstroIcon,
     },
     CSS: {
         name: "Css",
@@ -153,6 +165,19 @@ export const PROJECTS = [
         tags: [TAGS.IONIC, TAGS.ANGULAR, TAGS.TYPESCRIPT, TAGS.FIREBASE, TAGS.HTML, TAGS.CSS],
     },
     {
+        title: "Pokedex",
+        description:
+            "Buscador de pokémon utilizando la pokeapi",
+        link: "https://datapoke.netlify.app/",
+        github: "https://github.com/Fabiantonio/Pokedex",
+        images: [
+            "/pokedex_1.jpg",
+            "/pokedex_2.jpg",
+            "/pokedex_3.jpg",
+        ],
+        tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    },
+    {
         title: "Chat Bot Local",
         description:
             "Mini chat gpt utilizando un modelo de IA",
@@ -175,19 +200,6 @@ export const PROJECTS = [
             "/calculadora_1.png",
             "/calculadora_2.png",
             "/calculadora_3.png",
-        ],
-        tags: [TAGS.HTML, TAGS.JAVASCRIPT],
-    },
-    {
-        title: "Pokedex",
-        description:
-            "Buscador de pokémon utilizando la pokeapi",
-        link: "https://pokedexlocal.netlify.app/",
-        github: "https://github.com/Fabiantonio/Pokedex",
-        images: [
-            "/pokedex_1.webp",
-            "/pokedex_2.webp",
-            "/pokedex_3.webp",
         ],
         tags: [TAGS.HTML, TAGS.JAVASCRIPT],
     },
