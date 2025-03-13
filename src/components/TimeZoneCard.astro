@@ -11,11 +11,17 @@ import Card from "./Card/index.astro";
 
     function updateClock() {
         const timeDisplay = document.getElementById("timeDisplay");
+        const dateDisplay = document.getElementById("dateDisplay");
         const now = new Date();
 
         if (timeDisplay) {
             timeDisplay.textContent = formatTimeForChile(now);
             timeDisplay.setAttribute("datetime", now.toISOString());
+        }
+        
+        if (dateDisplay) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateDisplay.textContent = now.toLocaleDateString(['es-CL'], options as Intl.DateTimeFormatOptions);
         }
     }
 
@@ -27,12 +33,27 @@ import Card from "./Card/index.astro";
         clearInterval(interval);
     });
 </script>
-<Card colSpan="lg:col-span-2" rowSpan="md:row-span-2" title="🕰️ Hora Actual en Chile">
-    <time data-cursor="text"
-        datetime=""
-        id="timeDisplay"
-        class="text-4xl xl:text-6xl xl:whitespace-nowrap w-50 xl:w-100 flex justify-center items-center"
-    >
-        {formatTimeForChile(getCurrentTimeInChile())}
-    </time>
+<Card colSpan="lg:col-span-2" rowSpan="md:row-span-2" title="">
+    <div class="flex flex-col items-center justify-center h-full gap-2">
+        <div class="relative">
+            <time
+                datetime=""
+                id="timeDisplay"
+                class="text-4xl sm:text-5xl xl:text-6xl font-semibold text-black dark:text-white flex justify-center items-center"
+                data-cursor="text"
+            >
+                {formatTimeForChile(getCurrentTimeInChile())}
+            </time>
+            <div class="absolute -right-4 top-0 w-2 h-2 rounded-full bg-orange-600 dark:bg-indigo-500 animate-pulse"></div>
+        </div>
+        
+        <p id="dateDisplay" class="text-sm text-gray-600 dark:text-gray-400 italic mt-0">
+            {new Date().toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+        
+        <div class="mt-0 flex items-center gap-1">
+            <div class="w-1.5 h-1.5 rounded-full bg-orange-600 dark:bg-indigo-500"></div>
+            <span class="text-xs text-gray-500 dark:text-gray-400">GMT-3 (Chile Continental)</span>
+        </div>
+    </div>
 </Card>
