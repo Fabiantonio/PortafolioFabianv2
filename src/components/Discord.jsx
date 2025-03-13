@@ -88,7 +88,7 @@ const DiscordStatus = () => {
         <img
           src={`https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png`}
           alt={`${discord_user.username}'s avatar`}
-          class="w-12 h-12 2xl:w-16 2xl:h-16 rounded-full shadow-md group-hover:scale-105 transition-transform duration-300"
+          class="w-12 h-12  rounded-full shadow-md group-hover:scale-105 transition-transform duration-300"
         />
         <span class="absolute bottom-0 right-0 flex h-3.5 w-3.5">
           <span class={`animate-ping absolute inline-flex h-full w-full rounded-full ${statusColors.ping} opacity-75`}></span>
