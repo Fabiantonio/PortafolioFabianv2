@@ -289,3 +289,33 @@ export const EXPERIENCE = [
         technologies: ["Ionic", "Angular", "Firebase", "QA"]
     },
 ];
+
+// Add this import at the top of your constants.ts file
+import HomeIcon from "../components/icons/Home.astro";
+import ProjectsIcon from "../components/icons/Projects.astro";
+import EducationIcon from "../components/icons/Education.astro";
+import ExperienceIcon from "../components/icons/Experience.astro";
+
+// Add this new constant to your file
+export const PAGES = [
+  {
+    name: "Inicio",
+    url: "/",
+    icon: HomeIcon,
+  },
+  {
+    name: "Proyectos",
+    url: "/projects",
+    icon: ProjectsIcon,
+  },
+  {
+    name: "Educación",
+    url: "/education",
+    icon: EducationIcon,
+  },
+  {
+    name: "Experiencia",
+    url: "/experience",
+    icon: ExperienceIcon,
+  },
+];
