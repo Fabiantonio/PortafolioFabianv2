@@ -67,15 +67,21 @@ const SpotifyStatus = () => {
         </div>
       ) : (
         <div class="flex gap-4 items-center">
-          <img
-            src="/red_spotify.webp"
-            alt="Logo de Spotify"
-            class="w-12 h-12"
-            width="64"
-            height="64"
-          />
-          <div title="404" class="error dark:text-white text-black text-lg">
-            404
+          <div class="w-12 h-12 relative flex items-center justify-center">
+            <img
+              src="/red_spotify.webp"
+              alt="Logo de Spotify"
+              class="w-10 h-10 opacity-70"
+              width="40"
+              height="40"
+            />
+            <div class="absolute inset-0 border-2 border-gray-300 dark:border-gray-700 rounded-full flex items-center justify-center">
+              <div class="w-8 h-0.5 bg-gray-400 dark:bg-gray-600 rotate-45"></div>
+            </div>
+          </div>
+          <div class="text-sm text-black dark:text-white">
+            <p class="font-semibold">No escuchando</p>
+            <p class="text-gray-400">Spotify Offline</p>
           </div>
         </div>
       )}
